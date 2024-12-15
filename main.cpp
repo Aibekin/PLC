@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <netinet/in.h>
 #include "CppADS.h"
-#include "AmsPacket.h"
+#include "AMS/ReadResponse.h"
 
 // IP-address: 169.254.39.115
 // Port: 48898
@@ -21,7 +21,13 @@ int main()
 
 		std::vector<uint8_t> response = plc.read(indexGroup, indexOffset, length);
 
-		std::cout << response.size();
+		ReadResponse res = ReadResponse::fromBytes(response);
+
+		std::cout << response.size() << std::endl;
+		std::cout << res.result << std::endl;
+		std::cout << res.length << std::endl;
+		for (auto i : res.data)
+			std::cout << i << std::endl;
 	}
 	catch (const std::exception &ex)
 	{

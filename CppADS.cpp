@@ -1,5 +1,5 @@
 #include "CppADS.h"
-#include "AmsPacket.h"
+#include "AMS/AmsPacket.h"
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
