@@ -7,6 +7,7 @@
 // AMS/TCP header
 struct AmsTcpHeader
 {
+    const uint16_t reserved = 0x0000;
     uint32_t length;
 
     AmsTcpHeader() : length(50) {}
