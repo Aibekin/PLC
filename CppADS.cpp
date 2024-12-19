@@ -38,6 +38,8 @@ void CppADS::disconnect()
 
 void CppADS::sendRequest(const std::vector<uint8_t> &request)
 {
+	for (auto i : request)
+		std::cout << i << std::endl;
 	if (send(m_socket_fd, request.data(), request.size(), 0x0000) < 0)
 		throw std::runtime_error("Failed to send request");
 }
@@ -45,9 +47,13 @@ void CppADS::sendRequest(const std::vector<uint8_t> &request)
 std::vector<uint8_t> CppADS::receiveResponse()
 {
 	uint8_t buffer[1024];
-	int bytes_received = recv(m_socket_fd, buffer, sizeof(buffer), 0x0001);
+	int bytes_received = recv(m_socket_fd, buffer, sizeof(buffer), 0x0000);
 	if (bytes_received < 0)
 		throw std::runtime_error("Failed to receive response");
+
+	std::cout << "Success response" << std::endl;
+
+	std::cout << bytes_received << std::endl;
 
 	return std::vector<uint8_t>(buffer, buffer + bytes_received);
 }

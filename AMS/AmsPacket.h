@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstring>
 #include <iostream>
+#include <typeinfo>
 
 // AMS/TCP header
 struct AmsTcpHeader
@@ -32,7 +33,7 @@ struct AmsHeader
     uint32_t invokeId;
 
     AmsHeader()
-        : targetNetId({5, 114, 111, 44, 1, 1}), targetPort(801), sourceNetId({192, 168, 248, 165, 1, 1}), sourcePort(33013),
+        : targetNetId({5, 114, 111, 44, 1, 1}), targetPort(801), sourceNetId({192, 168, 248, 165, 1, 1}), sourcePort(32850),
           commandId(0x0002), stateFlags(0x0004), dataLength(12), errorCode(0), invokeId(0) {}
 };
 
